@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Tarea2._1.Views.Home"
+             Title="Home">
+
+    <ContentPage.Content>
+        <ListView x:Name="ListCountries"
+                  ItemsSource="{Binding countries}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="10">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding name}" 
+                                       FontSize="Medium"
+                                       HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding region}" 
+                                       FontSize="Small"
+                                       HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding capital}"                                    
+                                       FontAttributes="Bold"
+                                       FontSize="Small"
+                                       HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding area}"
+                                       FontAttributes="Bold"
+                                       FontSize="Small"
+                                       HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+</ContentPage>
