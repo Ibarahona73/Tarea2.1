@@ -15,6 +15,8 @@ namespace Tarea2._1.Controller
         public static string ACountries = "https://restcountries.com/v3.1/all";
         public static string CapCountry = "https://restcountries.com/v3.1/capital/";
         public static string RegCountry = "https://restcountries.com/v3.1/region/";
+        public static string RegCountryEsp = "https://restcountries.com/v3.1/name/";
+
 
     }
 }

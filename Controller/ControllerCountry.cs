@@ -10,24 +10,27 @@ namespace Tarea2._1.Controller
     {
         public async static Task<List<Models.Country>> GetCounties()
         {
+           List<Models.Country> countries = new List<Models.Country>();
+
             try
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    HttpResponseMessage responseMessage = await client.GetAsync("https://restcountries.com/v3.1/all");
+                    HttpResponseMessage responseMessage = await client.GetAsync(Controller.Apirest.ACountries);
 
                     if (responseMessage != null && responseMessage.IsSuccessStatusCode)
                     {
                         var result = await responseMessage.Content.ReadAsStringAsync();
-                        return JsonConvert.DeserializeObject<List<Models.Country>>(result);
+                        countries = JsonConvert.DeserializeObject<List<Models.Country>>(result);
                     }
                 }
+                return countries;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"Error: {ex}");
+                return null;
             }
-            return null;
         }
     }
 }

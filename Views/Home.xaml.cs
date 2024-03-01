@@ -7,16 +7,18 @@ namespace Tarea2._1.Views
 {
     public partial class Home : ContentPage
     {
-        public ObservableCollection<Country> Countries { get; set; }
+        private Controller.ControllerCountry controllerCountry = new Controller.ControllerCountry();
+
+        public ObservableCollection<Country> Country { get; set; }
 
         public Home()
         {
             InitializeComponent();
-            Countries = new ObservableCollection<Country>();
-            LoadDataAsyn();
+            Country = new ObservableCollection<Country>();
+            LoadAsyncs();
         }
 
-        public async void LoadDataAsyn()
+        public async void LoadAsyncs()
         {
             await LoadDataAsync();
         }
@@ -29,15 +31,15 @@ namespace Tarea2._1.Views
             {
                 foreach (var country in countries)
                 {
-                    countries.Add(country);
+                    Country.Add(country);
                 }
+
+                ListCountries.ItemsSource = countries;
             }
             else
-            {
-                // Manejar la situación donde no se pudieron obtener los datos de la API
+            {                
+                await DisplayAlert("Error", "No se pudieron cargar los países.", "OK");
             }
-
-            ListCountries.ItemsSource = countries;
         }
     }
 }

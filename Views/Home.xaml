@@ -11,19 +11,21 @@
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Padding="10">
-                            <StackLayout Orientation="Horizontal">
+                            <StackLayout Orientation="Vertical">
                                 <Label Text="{Binding name}" 
                                        FontSize="Medium"
                                        HorizontalOptions="StartAndExpand"/>
                                 <Label Text="{Binding region}" 
                                        FontSize="Small"
                                        HorizontalOptions="EndAndExpand"/>
-                            </StackLayout>
-                            <StackLayout Orientation="Horizontal">
                                 <Label Text="{Binding capital}"                                    
                                        FontAttributes="Bold"
                                        FontSize="Small"
                                        HorizontalOptions="StartAndExpand"/>
+                                <Label Text="{Binding languages}"
+                                       FontAttributes="Bold"
+                                       FontSize="Small"
+                                       HorizontalOptions="EndAndExpand"/>
                                 <Label Text="{Binding area}"
                                        FontAttributes="Bold"
                                        FontSize="Small"
