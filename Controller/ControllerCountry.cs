@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -10,7 +11,7 @@ namespace Tarea2._1.Controller
     {
         public async static Task<List<Models.Country>> GetCounties()
         {
-           List<Models.Country> countries = new List<Models.Country>();
+            List<Models.Country> countries = new List<Models.Country>();
 
             try
             {
@@ -23,14 +24,19 @@ namespace Tarea2._1.Controller
                         var result = await responseMessage.Content.ReadAsStringAsync();
                         countries = JsonConvert.DeserializeObject<List<Models.Country>>(result);
                     }
+                    else
+                    {
+                        throw new Exception("La solicitud HTTP no fue exitosa.");
+                    }
                 }
                 return countries;
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error: {ex}");
-                return null;
+                throw;
             }
         }
     }
+
 }

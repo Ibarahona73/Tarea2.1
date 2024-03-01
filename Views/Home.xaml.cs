@@ -9,7 +9,7 @@ namespace Tarea2._1.Views
     {
         private Controller.ControllerCountry controllerCountry = new Controller.ControllerCountry();
 
-        public ObservableCollection<Country> Country { get; set; }
+        private ObservableCollection<Country> Country { get; set; }
 
         public Home()
         {
@@ -25,20 +25,27 @@ namespace Tarea2._1.Views
 
         private async Task LoadDataAsync()
         {
-            var countries = await Controller.ControllerCountry.GetCounties();
-
-            if (countries != null)
+            try
             {
-                foreach (var country in countries)
-                {
-                    Country.Add(country);
-                }
+                var countries = await Controller.ControllerCountry.GetCounties();
 
-                ListCountries.ItemsSource = countries;
+                if (countries != null)
+                {
+                    foreach (var country in countries)
+                    {
+                        Country.Add(country);
+                    }
+
+                    ListCountries.ItemsSource = countries;
+                }
+                else
+                {
+                    await DisplayAlert("Error", "No se pudieron cargar los países.", "OK");
+                }
             }
-            else
-            {                
-                await DisplayAlert("Error", "No se pudieron cargar los países.", "OK");
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Se produjo un error al cargar los países: {ex.Message}", "OK");
             }
         }
     }

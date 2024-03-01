@@ -12,24 +12,16 @@
                     <ViewCell>
                         <StackLayout Padding="10">
                             <StackLayout Orientation="Vertical">
-                                <Label Text="{Binding name}" 
+                                <Label Text="{Binding Common}" 
                                        FontSize="Medium"
                                        HorizontalOptions="StartAndExpand"/>
-                                <Label Text="{Binding region}" 
+                                <Label Text="{Binding Official}" 
                                        FontSize="Small"
                                        HorizontalOptions="EndAndExpand"/>
-                                <Label Text="{Binding capital}"                                    
+                                <Label Text="{Binding NativeName}"                                    
                                        FontAttributes="Bold"
                                        FontSize="Small"
                                        HorizontalOptions="StartAndExpand"/>
-                                <Label Text="{Binding languages}"
-                                       FontAttributes="Bold"
-                                       FontSize="Small"
-                                       HorizontalOptions="EndAndExpand"/>
-                                <Label Text="{Binding area}"
-                                       FontAttributes="Bold"
-                                       FontSize="Small"
-                                       HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                         </StackLayout>
                     </ViewCell>
